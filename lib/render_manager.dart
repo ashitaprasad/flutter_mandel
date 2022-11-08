@@ -114,7 +114,7 @@ class RenderManager {
       _requestedTilesCompleters[requestCount++] = completer;
       return completer.future;
     } else {
-      /// No rendereing isolate
+      /// No rendering isolate
       final mandel = Mandelbrot();
 
       final double aspect = width / height;
