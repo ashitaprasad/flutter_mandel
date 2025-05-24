@@ -13,27 +13,24 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("CPU Profiler Demo"),
-      ),
+      appBar: AppBar(title: const Text("CPU Profiler Demo")),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             const IsolateControl(),
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
             ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const MandelExplorer(),
-                    ),
-                  );
-                },
-                child: const Text("Launch Explorer")),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MandelExplorer(),
+                  ),
+                );
+              },
+              child: const Text("Launch Explorer"),
+            ),
           ],
         ),
       ),
@@ -42,9 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class IsolateControl extends StatefulWidget {
-  const IsolateControl({
-    Key? key,
-  }) : super(key: key);
+  const IsolateControl({Key? key}) : super(key: key);
 
   @override
   State<IsolateControl> createState() => _IsolateControlState();
@@ -57,18 +52,18 @@ class _IsolateControlState extends State<IsolateControl> {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text('# of rendering Isolates: ${renderManager.isolateList.length}'),
-        const SizedBox(
-          width: 16,
+        const SizedBox(width: 16),
+        IconButton(
+          onPressed: () async {
+            await renderManager.increaseIsolateCount();
+            setState(() {});
+          },
+          icon: const Icon(Icons.add),
         ),
         IconButton(
-            onPressed: () async {
-              await renderManager.increaseIsolateCount();
-              setState(() {});
-            },
-            icon: const Icon(Icons.add)),
-        IconButton(
-            onPressed: () => setState((renderManager.decreaseIsolateCount)),
-            icon: const Icon(Icons.remove))
+          onPressed: () => setState((renderManager.decreaseIsolateCount)),
+          icon: const Icon(Icons.remove),
+        ),
       ],
     );
   }

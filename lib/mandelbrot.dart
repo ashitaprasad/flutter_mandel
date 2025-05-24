@@ -28,11 +28,11 @@ class Mandelbrot {
     int color = 0x4400ffff;
     if (iter > 0) {
       color = Color.fromRGBO(
-              255 * (1 + math.cos(3.32 * math.log(iter + 1))) ~/ 1,
-              255 * (1 + math.cos(.774 * math.log(iter + 1))) ~/ 1,
-              255 * (1 + math.cos(.412 * math.log(iter + 1))) ~/ 1,
-              1)
-          .value;
+        255 * (1 + math.cos(3.32 * math.log(iter + 1))) ~/ 1,
+        255 * (1 + math.cos(.774 * math.log(iter + 1))) ~/ 1,
+        255 * (1 + math.cos(.412 * math.log(iter + 1))) ~/ 1,
+        1,
+      ).value;
     }
     return color;
   }

@@ -55,21 +55,21 @@ class IsolateEntry {
   final Isolate isolate;
   final SendPort toIsolate;
 
-  IsolateEntry({
-    required this.isolate,
-    required this.toIsolate,
-  });
+  IsolateEntry({required this.isolate, required this.toIsolate});
 
-  static Future<IsolateEntry> create(
-      {required int isolateId, required SendPort resultPort}) async {
+  static Future<IsolateEntry> create({
+    required int isolateId,
+    required SendPort resultPort,
+  }) async {
     ReceivePort initPort = ReceivePort();
 
     final spawnedIsolate = await Isolate.spawn(
       isolateHandler,
       IsolateInitData(
-          initSendPort: initPort.sendPort,
-          isolateId: isolateId,
-          resultPort: resultPort),
+        initSendPort: initPort.sendPort,
+        isolateId: isolateId,
+        resultPort: resultPort,
+      ),
     );
 
     /// Wait to receive the communication port of the just created isolate back.
@@ -103,13 +103,14 @@ class IsolateEntry {
       final imageBuffer = Uint32List(request.width * request.height);
 
       mandel.renderData(
-          data: imageBuffer,
-          xMin: request.upperLeftCoord.dx,
-          xMax: request.upperLeftCoord.dx + request.renderWidth,
-          yMin: request.upperLeftCoord.dy,
-          yMax: request.upperLeftCoord.dy + request.renderWidth / aspect,
-          bitmapWidth: request.width,
-          bitMapHeight: request.height);
+        data: imageBuffer,
+        xMin: request.upperLeftCoord.dx,
+        xMax: request.upperLeftCoord.dx + request.renderWidth,
+        yMin: request.upperLeftCoord.dy,
+        yMax: request.upperLeftCoord.dy + request.renderWidth / aspect,
+        bitmapWidth: request.width,
+        bitMapHeight: request.height,
+      );
 
       resultPort.send(
         TileResponse(

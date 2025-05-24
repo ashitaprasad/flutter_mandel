@@ -39,17 +39,16 @@ class _MandleViewState extends State<MandleView> {
   void renderMandel() {
     renderManager
         .renderTile(
-            width: widget.width,
-            height: widget.height,
-            upperLeftCoord: widget.upperLeftCoord,
-            renderWidth: widget.renderWidth)
-        .then(
-      (image) {
-        if (mounted) {
-          setState(() => imageToDisplay = image);
-        }
-      },
-    );
+          width: widget.width,
+          height: widget.height,
+          upperLeftCoord: widget.upperLeftCoord,
+          renderWidth: widget.renderWidth,
+        )
+        .then((image) {
+          if (mounted) {
+            setState(() => imageToDisplay = image);
+          }
+        });
   }
 
   @override
