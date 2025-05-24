@@ -3,7 +3,7 @@ import 'package:flutter_mandel/render_manager.dart';
 import 'mandel_view.dart';
 
 class MandelExplorer extends StatefulWidget {
-  const MandelExplorer({Key? key}) : super(key: key);
+  const MandelExplorer({super.key});
 
   @override
   State<MandelExplorer> createState() => _MandelExplorerState();

@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class IsolateControl extends StatefulWidget {
-  const IsolateControl({Key? key}) : super(key: key);
+  const IsolateControl({super.key});
 
   @override
   State<IsolateControl> createState() => _IsolateControlState();

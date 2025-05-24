@@ -32,7 +32,7 @@ class Mandelbrot {
         255 * (1 + math.cos(.774 * math.log(iter + 1))) ~/ 1,
         255 * (1 + math.cos(.412 * math.log(iter + 1))) ~/ 1,
         1,
-      ).value;
+      ).toARGB32();
     }
     return color;
   }

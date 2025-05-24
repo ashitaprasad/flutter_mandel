@@ -13,8 +13,8 @@ class MandleView extends StatefulWidget {
     required this.height,
     required this.upperLeftCoord,
     required this.renderWidth,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<MandleView> createState() => _MandleViewState();
